@@ -1,8 +1,8 @@
-Mario Simplified-Ver.
+MINI MONSTER ADVENTURE.
 
 Description
 
-Mario Simplified-Ver. is a game where the player has to jump from one pipe to the other pipe. 
+MINI MONSTER ADVENTURE. is a game where the player has to jump from one pipe to the other pipe. 
 There are gaps between the pipes.
 The game ends when the player falls into a gap.  
 After that, a score is calculated based on how many pipes you jumped.
