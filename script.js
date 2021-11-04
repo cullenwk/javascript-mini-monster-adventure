@@ -51,12 +51,12 @@ let characW = 40
 let characH = 40
 let pipeWidth = 55 
 let score = 0
-let audio = new Audio('audio/EasyPeasy.wav')
 let dragonX = 200
 let dragonY = 80
 let dragonW = 200
 let dragonH = 120
-
+let audio = new Audio('audio/EasyPeasy.wav')
+let soundEffect = new Audio('audio/cartoon.mp3')
 
 // new array for pipes
 let pipes = [
@@ -139,6 +139,7 @@ function draw(){
 
      }
 }
+        // when the monster falls, game over
         if (characY >= canvas.height) {
             isGameOver = true
         }
@@ -150,6 +151,9 @@ function draw(){
             canvas.style.display = 'none'
             audio.pause()
             audio.currentTime = 0
+            soundEffect.play()
+            soundEffect.volume = 0.02
+            
         }
         else {
         intervalId = requestAnimationFrame(draw)
