@@ -14,31 +14,31 @@ body {
 
 
 h1 {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 50px;
+    font-family: 'Fruktur', cursive;
+    font-size: 100px;
     text-align: center;
-    height: 150px;
+    height: 300px;
     margin: 80px
    
 }
 
 h2 {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 40px;
+    font-family: 'Fruktur', cursive;
+    font-size: 80px;
     text-align: center;
-    height: 30px;
+    height: 50px;
 }
 
 ul {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 35px;
+    font-family: 'Fruktur', cursive;
+    font-size: 50px;
     text-align: center;
     height: 200px
 }
 
 .button{
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 35px;
+    font-family: 'Fruktur', cursive;
+    font-size: 60px;
     text-align: center;
     display: flex;
     margin: auto;
@@ -48,12 +48,12 @@ ul {
 }
 
 .btn-restart{
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 35px;
+    font-family: 'Fruktur', cursive;
+    font-size: 80px;
     text-align: center;
     display: flex;
-    margin: 200px;
     display: grid;
+    margin: auto;
     background-color: #C4EBF5;
    
 }

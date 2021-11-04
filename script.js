@@ -4,9 +4,7 @@ canvas.style.border = '2px solid black';
 canvas.style.backgroundImage = 'images/sky.png'
 
 
-
 //load all the images
-
 let charac = new Image();
 charac.src = 'images/character.png';
 
@@ -60,9 +58,7 @@ let dragonW = 200
 let dragonH = 120
 
 
- 
-
-
+// new array for pipes
 let pipes = [
     {x: 400, y: characY + characH},
     {x: 650, y: 450},
@@ -71,19 +67,18 @@ let pipes = [
     {x: 1600, y: 550},
     {x: 1800, y: 600},
     {x: 2000, y: 500},
-   
-]
+   ]
 
+// new array for dragon
 let drag = [
     {x: 1550, y:650},
     {x: 1850, y:400},
     {x: 2550, y:150},
     {x: 3250, y:250},
-]
+    ]
 
-
+// all the functions
 function draw(){
-
     ctx.drawImage(bg, 0, 0)
     ctx.drawImage(cloudVer, 0, 0)
     ctx.font = '30px Verdana'
@@ -98,13 +93,14 @@ function draw(){
     if (isUp == true){
         characY -= 5   
     }
-   
+    
+    // for loop - pipes 
     for (let i=0; i<pipes.length; i ++){
-
         ctx.drawImage(pipeSouth, pipes[i].x, pipes[i].y)
         
-          pipes[i].x = pipes[i].x -2
+        pipes[i].x = pipes[i].x -2
        
+        // collision - pipes
         if(characY + characH >= pipes[i].y && 
            characX + characW <= pipes[i].x + pipeWidth + 10 &&
            characX >= pipes[i].x - 40 &&
@@ -113,38 +109,36 @@ function draw(){
                
 
         characX = characX -2           
-        }
+    }
 
+        // random pipes
         if (pipes[i].x + pipeSouth.width < 0){
             pipes[i].x = 1900 
-            //pipes[i].x = Math.floor(Math.random() * 400  + 800)
-            
     }
-    if (pipes[i].x == 0){
-        score++
+        if (pipes[i].x == 0){
+            score++
     }
 }
-
+     // for loop - dragon
      for (i = 0; i < drag.length; i++){
         ctx.drawImage(dragon, drag[i].x, drag[i].y, dragonW, dragonH)
          drag[i].x = drag[i].x -5
 
+         // collision - dragon
          if (characY <= drag[i].y + dragonH &&
             characY + characH >= drag[i].y &&
             characX + characW >= drag[i].x &&
             characX + characW <= drag[i].x + dragonW){
                 isGameOver = true
-            }
+    }
              
-
+         // random - dragon
          if (drag[i].x + dragonW < 0){
             drag[i].y = Math.floor(Math.random() * (canvas.height))
             drag[i].x = Math.floor(Math.random() * (canvas.width/2) + canvas.width)
 
      }
-    }
-        
-
+}
         if (characY >= canvas.height) {
             isGameOver = true
         }
@@ -156,25 +150,14 @@ function draw(){
             canvas.style.display = 'none'
             audio.pause()
             audio.currentTime = 0
-            
         }
         else {
-            intervalId = requestAnimationFrame(draw)
+        intervalId = requestAnimationFrame(draw)
         }
-        
-        
-
-
- 
 }
-
-
-
-
 
 function animation(){
     draw()
-    
 }
 
 function handleStart(){
@@ -189,21 +172,19 @@ function handleStart(){
 }
 
 
-
+// addEventListener
 document.addEventListener('keydown', (event) => {
     
     if (event.key == 'ArrowLeft') {
         isLeft = true;
         isRight = false;
         characX -= 6
-        
-
     }
+
     if (event.key == 'ArrowRight') {
         isRight = true
         isLeft = false
-        characX += 6
-       
+        characX += 6      
     }
 
     if (event.key == ' '){     
@@ -211,11 +192,10 @@ document.addEventListener('keydown', (event) => {
     }
 })
 
-    document.addEventListener('keyup', () => {
-        isLeft = false;
-        isRight = false;
-        isUp = false 
-
+document.addEventListener('keyup', () => {
+    isLeft = false;
+    isRight = false;
+    isUp = false 
 })
     
 startBtn.addEventListener('click', () => {
@@ -238,20 +218,14 @@ restartBtn.addEventListener('click', () => {
         {x: 1600, y: 550},
         {x: 1800, y: 600},
         {x: 2000, y: 500},
-       
-    ]
+       ]
     handleStart()
 
 })
 
-
 window.addEventListener('load', () => {
-    //draw();
     canvas.style.display = 'none';
     gameOver.style.display = 'none';
 
-    //loadSplash();
-    //gameOverScreen();
-    
 })
 
