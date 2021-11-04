@@ -51,7 +51,7 @@ let characH = 40
 let pipeWidth = 55 
 let score = 0
 let audio = new Audio('audio/EasyPeasy.wav')
-audio.volume = 0.1
+
 
  
 
@@ -120,6 +120,7 @@ function draw(){
             gameOver.style.display = 'block' 
             canvas.style.display = 'none'
             audio.pause()
+            audio.currentTime = 0
             
         }
         else {
@@ -129,7 +130,7 @@ function draw(){
         
 
 
-
+ 
 }
 
 
@@ -144,10 +145,12 @@ function animation(){
 function handleStart(){
     startBtn.style.display = 'none';
     canvas.style.display = 'block';
+    gameOver = document.querySelector('#game-over');
     gameOver.style.display = 'none'
     animation()
     audio.play()
-    
+    audio.volume = 0.02
+    audio.loop = true
 }
 
 
@@ -181,14 +184,27 @@ document.addEventListener('keydown', (event) => {
 })
     
 startBtn.addEventListener('click', () => {
-    splashScreen.style.display = 'none';
+    splashScreen.style.display    = 'none';
     canvas.style.display = 'block';
     handleStart()
 })
 
 restartBtn.addEventListener('click', () => {
-    gameOver.style.display = 'none'
     canvas.style.display = 'block'
+    score = 0
+    isGameOver = false
+    characX = 400     
+    characY = 600
+    pipes = [
+        {x: 400, y: characY + characH},
+        {x: 650, y: 450},
+        {x: 1000, y: 500},
+        {x: 1300, y: 600},
+        {x: 1600, y: 550},
+        {x: 1800, y: 600},
+        {x: 2000, y: 500},
+       
+    ]
     handleStart()
 
 })
