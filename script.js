@@ -10,6 +10,9 @@ canvas.style.backgroundImage = 'images/sky.png'
 let charac = new Image();
 charac.src = 'images/character.png';
 
+let dragon = new Image();
+dragon.src = 'images/dragon1.png';
+
 let cloudVer = new Image();
 cloudVer.src = 'images/cloudvertical.png';
 
@@ -51,6 +54,10 @@ let characH = 40
 let pipeWidth = 55 
 let score = 0
 let audio = new Audio('audio/EasyPeasy.wav')
+let dragonX = 200
+let dragonY = 80
+let dragonW = 200
+let dragonH = 120
 
 
  
@@ -65,6 +72,13 @@ let pipes = [
     {x: 1800, y: 600},
     {x: 2000, y: 500},
    
+]
+
+let drag = [
+    {x: 1550, y:650},
+    {x: 1850, y:400},
+    {x: 2550, y:150},
+    {x: 3250, y:250},
 ]
 
 
@@ -89,16 +103,16 @@ function draw(){
 
         ctx.drawImage(pipeSouth, pipes[i].x, pipes[i].y)
         
-          pipes[i].x = pipes[i].x -1
+          pipes[i].x = pipes[i].x -2
        
         if(characY + characH >= pipes[i].y && 
-           characX + characW <= pipes[i].x + pipeWidth + 10&&
+           characX + characW <= pipes[i].x + pipeWidth + 10 &&
            characX >= pipes[i].x - 40 &&
            characY + characH <= pipes[i].y + 40 ){
                characY = pipes[i].y - characH 
                
 
-        characX = characX -1           
+        characX = characX -2           
         }
 
         if (pipes[i].x + pipeSouth.width < 0){
@@ -106,10 +120,31 @@ function draw(){
             //pipes[i].x = Math.floor(Math.random() * 400  + 800)
             
     }
-        if (pipes[i].x == 0){
-            score++
-        }
+    if (pipes[i].x == 0){
+        score++
+    }
 }
+
+     for (i = 0; i < drag.length; i++){
+        ctx.drawImage(dragon, drag[i].x, drag[i].y, dragonW, dragonH)
+         drag[i].x = drag[i].x -5
+
+         if (characY <= drag[i].y + dragonH &&
+            characY + characH >= drag[i].y &&
+            characX + characW >= drag[i].x &&
+            characX + characW <= drag[i].x + dragonW){
+                isGameOver = true
+            }
+             
+
+         if (drag[i].x + dragonW < 0){
+            drag[i].y = Math.floor(Math.random() * (canvas.height))
+            drag[i].x = Math.floor(Math.random() * (canvas.width/2) + canvas.width)
+
+     }
+    }
+        
+
         if (characY >= canvas.height) {
             isGameOver = true
         }
