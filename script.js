@@ -1,5 +1,9 @@
 let canvas = document.getElementById('myCanvas');
 let ctx = canvas.getContext('2d');
+let startBtn = document.querySelector('#start-btn');
+let restartBtn = document.querySelector('.btn-restart')
+let splashScreen = document.querySelector('#splashScreen')
+let gameOver = document.querySelector('#game-over');
 canvas.style.border = '2px solid black';
 canvas.style.backgroundImage = 'images/sky.png'
 
@@ -33,10 +37,6 @@ let pipeFour = new Image();
 pipeFour.src = 'images/pipeFour.png';
 
 // variables
-let startBtn = document.querySelector('#start-btn');
-let restartBtn = document.querySelector('.btn-restart')
-let splashScreen = document.querySelector('#splashScreen')
-let gameOver = document.querySelector('#game-over');
 let intervalId = 0;
 let isGameOver = false;
 let pipeY = 450;
